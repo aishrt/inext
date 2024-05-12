@@ -1,0 +1,41 @@
+------------------------ i18n.ts ---------------------
+
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import common_en from './translations/en.json';
+import common_no from './translations/no.json';
+
+const resources = {
+  en: {
+    translation: common_en,
+  },
+  no: {
+    translation: common_no,
+  },
+};
+
+i18n.use(initReactI18next).init({
+  resources,
+  lng: 'en',
+  fallbackLng: 'en',
+  keySeparator: false,
+  interpolation: {
+    escapeValue: false,
+  },
+});
+
+export default i18n;
+
+
+
+------------------------ index.ts ----------------------------------
+
+const lang = localStorage.getItem('lang') || 'no';
+i18next.changeLanguage(lang);
+
+----------------------------------------------------------
+import i18next from 'i18next';
+import './i18n';
+
+{i18next.t('Hello')}
+----------------------------------------------------------
